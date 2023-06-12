@@ -44,11 +44,11 @@ key DEPT : DEPT ;
 @Aggregation.ApplySupported.Transformations
 @UI.Identification : [{Value : CID}]
 entity ME_Sender01 {
-key CID : CID ;
-CC : CC ;
-DEPT : DEPT ;
-Attr1 : Attr1 ;
-Attr2 : Attr2 ;
+  key CID : CID ;
+  CC : CC ;
+  DEPT : DEPT ;
+  Attr1 : Attr1 ;
+  Attr2 : Attr2 ;
 };
 
 /** {ID: "81ad02a0-3dd6-481b-9246-1a0a4f9ccb4c", description: "Model Join LJIM Sender and Cost Center"} */
@@ -56,33 +56,48 @@ Attr2 : Attr2 ;
 @Aggregation.ApplySupported.PropertyRestrictions
 @Aggregation.ApplySupported.Transformations
 @readonly
-entity MJ_LJIM_SenderCC as select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC, coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1, coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
-from ME_Sender01 as l
-LEFT JOIN ME_CCMaster as r on l.CC = r.CC;
+entity MJ_LJIM_SenderCC as
+    select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC,
+    coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1,
+    coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
+    from ME_Sender01 as l
+    LEFT JOIN ME_CCMaster as r
+    on l.CC = r.CC;
 
 /** {ID: "b51cb44d-fa3c-4e16-8ace-8c9d0f8c75c8", description: "Model Join FJIM Sender and Cost Center"} */
 @cds.odata.valuelist
 @Aggregation.ApplySupported.PropertyRestrictions
 @Aggregation.ApplySupported.Transformations
 @readonly
-entity MJ_FJIM_SenderCC as select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC, coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1, coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
-from ME_Sender01 as l
-FULL JOIN ME_CCMaster as r on l.CC = r.CC;
+entity MJ_FJIM_SenderCC as
+  select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC,
+  coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1,
+  coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
+  from ME_Sender01 as l
+  FULL JOIN ME_CCMaster as r
+  on l.CC = r.CC;
 
 /** {ID: "14ffaedb-cf54-4601-be61-0b5230d5d014", description: "Model Join CJIM Sender and Cost Center"} */
 @cds.odata.valuelist
 @Aggregation.ApplySupported.PropertyRestrictions
 @Aggregation.ApplySupported.Transformations
 @readonly
-entity MJ_CJIM_SenderCC as select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC, coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1, coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
-from ME_Sender01 as l
-CROSS JOIN ME_CCMaster as r ;
+entity MJ_CJIM_SenderCC as
+  select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC,
+  coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1,
+  coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
+  from ME_Sender01 as l
+  CROSS JOIN ME_CCMaster as r ;
 
 /** {ID: "517f08c8-69ee-4820-9bff-b4996fce4634", description: "Model Join IJIM Sender and Cost Center1"} */
 @cds.odata.valuelist
 @Aggregation.ApplySupported.PropertyRestrictions
 @Aggregation.ApplySupported.Transformations
 @readonly
-entity MJ_IJIM_SenderCC1 as select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC, coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1, coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
-from ME_Sender01 as l
-INNER JOIN ME_CCMaster as r on l.CC = r.CC;
+entity MJ_IJIM_SenderCC1 as
+  select coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC,
+  coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1,
+  coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
+  from ME_Sender01 as l
+  INNER JOIN ME_CCMaster as r
+  on l.CC = r.CC;

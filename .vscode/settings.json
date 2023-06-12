@@ -1,1 +1,95 @@
-{}
+{
+    "cds.checkDevKitInstalled": false,
+    "cSpell.ignorePaths": [
+        ".git",
+        ".vscode",
+        "node_modules/**",
+        "package.json",
+        "yarn.lock"
+    ],
+    "cSpell.language": "en",
+    "cSpell.words": [
+        "actuals",
+        "aggregatable",
+        "anonymized",
+        "disaggregate",
+        "Dynatrace",
+        "groupable",
+        "HANA",
+        "historize",
+        "insertable",
+        "labelledby",
+        "MTAEXT",
+        "Nexontis",
+        "OData",
+        "OneAgent",
+        "PaPM",
+        "WhiteSource"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        120
+    ],
+    "editor.trimAutoWhitespace": true,
+    "eslint.options": {
+        "cache": true,
+        "cacheLocation": ".cache/eslint/.eslintcache"
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "files.exclude": {
+        ".cache": true,
+        ".git": true,
+        ".idea": true
+    },
+    "files.watcherExclude": {
+        "**/.idea": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true
+    },
+    "git.branchProtection": [
+        "master"
+    ],
+    "javascript.preferences.quoteStyle": "single",
+    "npm.exclude": [
+        "**/dist/**",
+        "**/node_modules/**"
+    ],
+    "npm.packageManager": "yarn",
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[cds]": {
+        "editor.defaultFormatter": "SAPSE.vscode-cds"
+    },
+    "[sqlscript]": {
+        "editor.defaultFormatter": "jhodel.blue-phoenix"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[yaml]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "keep",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ],
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}
