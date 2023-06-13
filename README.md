@@ -1,5 +1,7 @@
 # Getting Started
 
+yarn
+
 ## Deploy to hana
 
 yarn run deploy
