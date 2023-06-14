@@ -29,4 +29,9 @@ service z {
   @readonly
   entity APDJOENV01_MJ_IJIM_SenderCC1 as projection on mydb.MJ_IJIM_SenderCC1;
 
+
+  @readonly
+  entity APDJOENV01_MJ_LJIM_SenderCC2 as projection on mydb.MJ_LJIM_SenderCC2;
+
+
 }

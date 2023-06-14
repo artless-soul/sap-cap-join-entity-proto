@@ -9,7 +9,7 @@ type DEPT_Desc : String @title: 'Department Description' @Analytics.Dimension ; 
 type Attr1 : String (30) @title: 'Attribute 1' @Analytics.Dimension ; /** "4049564e-3dd2-47a6-8dd6-ca16d3173150" */
 type Attr2 : String (30) @title: 'Attribute 2' @Analytics.Dimension ; /** "08316b60-c31b-46f0-885b-3c58cbdd0ca0" */
 type CID : UUID @odata.Type: 'Edm.String' @title: 'GUID' @Analytics.Dimension ; /** "3dd5458d-3243-400f-b0e3-883b669d5b80" */
-
+type ROW_ID : String @title: 'Row ID' @Analytics.Dimension ; /** "3dd5458d-3243-400f-b0e3-883b669d5b80" */
 // Environment functions
 /** {ID: "764169e8-072b-4745-ba90-d9ca0b7a1301"} */
 @title: 'Cost center master'
@@ -101,3 +101,16 @@ entity MJ_IJIM_SenderCC1 as
   from ME_Sender01 as l
   INNER JOIN ME_CCMaster as r
   on l.CC = r.CC;
+
+/** {ID: "81ad02a0-3dd6-481b-9246-1a0a4f9ccb4c", description: "Model Join LJIM Sender and Cost Center"} */
+@cds.odata.valuelist
+@Aggregation.ApplySupported.PropertyRestrictions
+@Aggregation.ApplySupported.Transformations
+@readonly
+entity MJ_LJIM_SenderCC2 as
+    select key ROW_NUMBER() OVER () AS ROW_ID: ROW_ID, coalesce(l.CID, '') as CID: CID, coalesce(nullIf(l.CC, ''), r.CC, '') as CC : CC,
+    coalesce(l.DEPT, '') as DEPT: DEPT, coalesce(nullIf(l.Attr1, ''), r.Attr1, '') as Attr1 : Attr1,
+    coalesce(l.Attr2, '') as Attr2: Attr2, coalesce(r.CC_Desc, '') as CC_Desc: CC_Desc
+    from ME_Sender01 as l
+    LEFT JOIN ME_CCMaster as r
+    on l.CC = r.CC;
